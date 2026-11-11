@@ -14,9 +14,9 @@ class AdminUserService
         if (!empty($filters['search'])) {
             $search = $filters['search'];
             $query->where(function ($q) use ($search) {
-                $q->where('name', 'ilike', "%{$search}%")
-                  ->orWhere('username', 'ilike', "%{$search}%")
-                  ->orWhere('email', 'ilike', "%{$search}%");
+                $q->whereLike('name', "%{$search}%")
+                  ->orWhereLike('username', "%{$search}%")
+                  ->orWhereLike('email', "%{$search}%");
             });
         }
 

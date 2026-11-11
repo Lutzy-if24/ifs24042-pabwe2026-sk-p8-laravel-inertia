@@ -18,8 +18,8 @@ class PostRepository implements PostRepositoryInterface
         if (!empty($filters['search'])) {
             $search = $filters['search'];
             $query->where(function ($q) use ($search) {
-                $q->where('title', 'ilike', "%{$search}%")
-                  ->orWhere('content', 'ilike', "%{$search}%");
+                $q->whereLike('title', "%{$search}%")
+                  ->orWhereLike('content', "%{$search}%");
             });
         }
 
@@ -46,8 +46,8 @@ class PostRepository implements PostRepositoryInterface
         if (!empty($filters['search'])) {
             $search = $filters['search'];
             $query->where(function ($q) use ($search) {
-                $q->where('title', 'ilike', "%{$search}%")
-                  ->orWhere('excerpt', 'ilike', "%{$search}%");
+                $q->whereLike('title', "%{$search}%")
+                  ->orWhereLike('excerpt', "%{$search}%");
             });
         }
 
@@ -65,8 +65,8 @@ class PostRepository implements PostRepositoryInterface
         if (!empty($filters['search'])) {
             $search = $filters['search'];
             $query->where(function ($q) use ($search) {
-                $q->where('title', 'ilike', "%{$search}%")
-                  ->orWhereHas('user', fn ($u) => $u->where('name', 'ilike', "%{$search}%"));
+                $q->whereLike('title', "%{$search}%")
+                  ->orWhereHas('user', fn ($u) => $u->whereLike('name', "%{$search}%"));
             });
         }
 
@@ -85,7 +85,7 @@ class PostRepository implements PostRepositoryInterface
 
         if (!empty($filters['search'])) {
             $search = $filters['search'];
-            $query->where('title', 'ilike', "%{$search}%");
+            $query->whereLike('title', "%{$search}%");
         }
 
         return $query->paginate($perPage)->withQueryString();
