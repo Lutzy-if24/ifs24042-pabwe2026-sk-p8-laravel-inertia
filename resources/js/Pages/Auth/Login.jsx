@@ -13,7 +13,7 @@ export default function Login() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-violet-950 via-violet-900 to-indigo-900 flex items-center justify-center p-4">
+        <main className="min-h-screen bg-gradient-to-br from-violet-950 via-violet-900 to-indigo-900 flex items-center justify-center p-4">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute -top-40 -right-40 w-80 h-80 bg-violet-500/20 rounded-full blur-3xl" />
                 <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl" />
@@ -85,7 +85,7 @@ export default function Login() {
                             id="login-submit"
                             type="submit"
                             disabled={processing}
-                            className="w-full bg-violet-500 hover:bg-violet-400 text-white font-semibold py-3 rounded-lg transition-all duration-200 mt-2 cursor-pointer disabled:opacity-60 flex items-center justify-center gap-2"
+                            className="w-full bg-violet-600 hover:bg-violet-700 text-white font-semibold py-3 rounded-lg transition-all duration-200 mt-2 cursor-pointer disabled:opacity-60 flex items-center justify-center gap-2"
                         >
                             {processing ? (
                                 <>
@@ -110,6 +110,6 @@ export default function Login() {
                     </Link>
                 </p>
             </div>
-        </div>
+        </main>
     );
 }

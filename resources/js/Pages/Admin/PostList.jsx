@@ -22,14 +22,14 @@ export default function PostList({ posts, filters, categories }) {
         <AppLayout title="Semua Artikel">
             <div className="mb-6 flex flex-col md:flex-row gap-3 justify-between items-start md:items-center">
                 <form onSubmit={handleSearch} className="flex flex-wrap gap-2">
-                    <input name="search" defaultValue={filters?.search} placeholder="Cari judul atau penulis..."
+                    <input name="search" aria-label="Cari judul atau penulis" defaultValue={filters?.search} placeholder="Cari judul atau penulis..."
                         className="border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 w-56" />
-                    <select name="category" defaultValue={filters?.category}
+                    <select name="category" aria-label="Filter kategori" defaultValue={filters?.category}
                         className="border border-slate-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-violet-500 cursor-pointer">
                         <option value="">Semua Kategori</option>
                         {categories?.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
                     </select>
-                    <button type="submit" className="bg-violet-600 hover:bg-violet-700 text-white px-4 py-2 rounded-lg text-sm cursor-pointer">🔍</button>
+                    <button type="submit" aria-label="Cari" className="bg-violet-600 hover:bg-violet-700 text-white px-4 py-2 rounded-lg text-sm cursor-pointer">🔍</button>
                 </form>
                <a href={route('admin.posts.export')}
                     className="border border-emerald-500 text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-lg text-sm font-medium cursor-pointer flex items-center gap-1.5">
@@ -50,7 +50,7 @@ export default function PostList({ posts, filters, categories }) {
                         <div key={post.id} className="grid grid-cols-12 gap-3 px-5 py-4 items-center hover:bg-slate-50">
                             <div className="col-span-12 md:col-span-4">
                                 <p className="font-semibold text-slate-900 text-sm truncate">{post.title}</p>
-                                <p className="text-xs text-slate-400 truncate">{post.slug}</p>
+                                <p className="text-xs text-slate-500 truncate">{post.slug}</p>
                             </div>
                             <div className="hidden md:block col-span-2">
                                 <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${CATEGORY_COLORS[post.category] || 'bg-slate-100 text-slate-700'}`}>
@@ -59,19 +59,19 @@ export default function PostList({ posts, filters, categories }) {
                             </div>
                             <div className="hidden md:block col-span-2 text-sm text-slate-600">
                                 {post.user?.name}
-                                <p className="text-xs text-slate-400">@{post.user?.username}</p>
+                                <p className="text-xs text-slate-500">@{post.user?.username}</p>
                             </div>
                             <div className="hidden md:block col-span-2">
                                 <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${post.is_published ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-600'}`}>
                                     {post.is_published ? '✅ Published' : '📋 Draf'}
                                 </span>
                             </div>
-                            <div className="hidden md:block col-span-2 text-xs text-slate-400">
+                            <div className="hidden md:block col-span-2 text-xs text-slate-500">
                                 {post.created_at ? new Date(post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) : '—'}
                             </div>
                         </div>
                     )) : (
-                        <div className="text-center py-16 text-slate-400">
+                        <div className="text-center py-16 text-slate-500">
                             <div className="text-5xl mb-3">📭</div>
                             <p className="font-semibold">Tidak ada artikel ditemukan</p>
                         </div>

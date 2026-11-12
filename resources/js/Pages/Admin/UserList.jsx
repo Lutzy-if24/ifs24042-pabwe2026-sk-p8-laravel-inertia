@@ -31,7 +31,7 @@ export default function UserList({ users, filters }) {
         <AppLayout title="Kelola Pengguna">
             <div className="mb-6 flex flex-col md:flex-row gap-3 items-start md:items-center justify-between">
                 <form onSubmit={handleSearch} className="flex gap-2">
-                    <input name="search" defaultValue={filters?.search} placeholder="Cari nama, username, email..."
+                    <input name="search" aria-label="Cari nama, username, atau email" defaultValue={filters?.search} placeholder="Cari nama, username, email..."
                         className="border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 w-64" />
                     <button type="submit" className="bg-violet-600 hover:bg-violet-700 text-white px-4 py-2 rounded-lg text-sm cursor-pointer">🔍 Cari</button>
                 </form>
@@ -54,29 +54,29 @@ export default function UserList({ users, filters }) {
                                 </div>
                                 <div className="min-w-0">
                                     <p className="font-semibold text-slate-900 text-sm">{user.name}</p>
-                                    <p className="text-xs text-slate-400">@{user.username}</p>
+                                    <p className="text-xs text-slate-500">@{user.username}</p>
                                 </div>
                             </div>
                             <div className="hidden md:block col-span-3 text-sm text-slate-500 truncate">{user.email}</div>
                             <div className="hidden md:flex col-span-2 items-center gap-2">
-                                <select value={user.role} onChange={e => handleRole(user, e.target.value)}
+                                <select aria-label={`Ubah role ${user.username}`} value={user.role} onChange={e => handleRole(user, e.target.value)}
                                     className="text-xs border border-slate-300 rounded-lg px-2 py-1 cursor-pointer bg-white focus:outline-none focus:ring-1 focus:ring-violet-500">
                                     <option value="member">Member</option>
                                     <option value="admin">Admin</option>
                                 </select>
                             </div>
-                            <div className="hidden md:block col-span-2 text-xs text-slate-400">
+                            <div className="hidden md:block col-span-2 text-xs text-slate-500">
                                 {user.created_at ? new Date(user.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) : '—'}
                             </div>
                             <div className="col-span-2 md:col-span-1 flex justify-end gap-1">
-                                <Link href={route('admin.users.posts', user.id)} title="Lihat Artikel"
+                                <Link href={route('admin.users.posts', user.id)} title="Lihat Artikel" aria-label={`Lihat artikel ${user.name}`}
                                     className="p-1.5 text-violet-600 hover:bg-violet-50 rounded-lg cursor-pointer text-sm">📋</Link>
-                                <button onClick={() => handleDelete(user)} title="Hapus"
+                                <button onClick={() => handleDelete(user)} title="Hapus" aria-label={`Hapus ${user.name}`}
                                     className="p-1.5 text-red-600 hover:bg-red-50 rounded-lg cursor-pointer text-sm">🗑️</button>
                             </div>
                         </div>
                     )) : (
-                        <div className="text-center py-16 text-slate-400">
+                        <div className="text-center py-16 text-slate-500">
                             <div className="text-5xl mb-3">👥</div>
                             <p className="font-semibold">Tidak ada pengguna ditemukan</p>
                         </div>

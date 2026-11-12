@@ -7,7 +7,7 @@ function PublicNavbar() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200 shadow-sm">
+        <nav aria-label="Navigasi utama" className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200 shadow-sm">
             <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2.5 font-black text-violet-700 text-xl">
                     <div className="w-8 h-8 bg-violet-700 rounded-lg flex items-center justify-center">
@@ -119,7 +119,7 @@ function PostCard({ post }) {
                         </div>
                         <span className="text-xs text-slate-500">{post.user?.name}</span>
                     </div>
-                    <span className="text-xs text-slate-400">
+                    <span className="text-xs text-slate-500">
                         {post.published_at ? new Date(post.published_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) : ''}
                     </span>
                 </div>
@@ -150,87 +150,91 @@ export default function PostIndex({ posts, filters, categories }) {
         <div className="min-h-screen bg-slate-50">
             <PublicNavbar />
 
-            {!filters?.search && !filters?.category && posts.current_page === 1 && (
-                <section className="bg-gradient-to-br from-violet-900 via-violet-800 to-indigo-900 text-white py-20 px-4">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <div className="inline-flex items-center gap-2 bg-violet-700/50 text-violet-200 text-sm font-medium px-4 py-1.5 rounded-full mb-6">
-                            ✨ Platform Publikasi Artikel Modern
+            <main>
+                {!filters?.search && !filters?.category && posts.current_page === 1 && (
+                    <section className="bg-gradient-to-br from-violet-900 via-violet-800 to-indigo-900 text-white py-20 px-4">
+                        <div className="max-w-4xl mx-auto text-center">
+                            <div className="inline-flex items-center gap-2 bg-violet-700/50 text-violet-200 text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+                                ✨ Platform Publikasi Artikel Modern
+                            </div>
+                            <h1 className="text-4xl md:text-6xl font-black leading-tight mb-6">
+                                Tulis, Bagikan &amp;<br />
+                                <span className="text-violet-300">Ilhami Dunia</span>
+                            </h1>
+                            <p className="text-violet-200 text-lg max-w-2xl mx-auto mb-8">
+                                BlogVerse Pro adalah platform tempat para penulis berbagi pengetahuan, pengalaman, dan ide-ide segar dengan komunitas yang aktif.
+                            </p>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <Link href="/register" className="bg-white text-violet-900 hover:bg-violet-50 font-bold px-8 py-3.5 rounded-xl transition-all shadow-lg cursor-pointer">
+                                    ✨ Mulai Menulis Gratis
+                                </Link>
+                                <Link href="/login" className="border border-violet-400 text-violet-200 hover:bg-violet-700/50 font-semibold px-8 py-3.5 rounded-xl transition-all cursor-pointer">
+                                    🔐 Masuk ke Akun
+                                </Link>
+                            </div>
                         </div>
-                        <h1 className="text-4xl md:text-6xl font-black leading-tight mb-6">
-                            Tulis, Bagikan &amp;<br />
-                            <span className="text-violet-300">Ilhami Dunia</span>
-                        </h1>
-                        <p className="text-violet-200 text-lg max-w-2xl mx-auto mb-8">
-                            BlogVerse Pro adalah platform tempat para penulis berbagi pengetahuan, pengalaman, dan ide-ide segar dengan komunitas yang aktif.
-                        </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Link href="/register" className="bg-white text-violet-900 hover:bg-violet-50 font-bold px-8 py-3.5 rounded-xl transition-all shadow-lg cursor-pointer">
-                                ✨ Mulai Menulis Gratis
-                            </Link>
-                            <Link href="/login" className="border border-violet-400 text-violet-200 hover:bg-violet-700/50 font-semibold px-8 py-3.5 rounded-xl transition-all cursor-pointer">
-                                🔐 Masuk ke Akun
-                            </Link>
-                        </div>
-                    </div>
-                </section>
-            )}
+                    </section>
+                )}
 
-            <div className="max-w-7xl mx-auto px-4 py-8">
-                <form onSubmit={handleFilter} className="flex flex-col md:flex-row gap-3 mb-8">
-                    <input
-                        type="text"
-                        value={search}
-                        onChange={e => setSearch(e.target.value)}
-                        placeholder="Cari artikel..."
-                        className="flex-1 border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white"
-                    />
-                    <select
-                        value={category}
-                        onChange={e => setCategory(e.target.value)}
-                        className="border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white cursor-pointer"
-                    >
-                        <option value="">Semua Kategori</option>
-                        {categories?.map(cat => (
-                            <option key={cat.value} value={cat.value}>{cat.label}</option>
-                        ))}
-                    </select>
-                    <button type="submit" className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-2.5 rounded-xl text-sm font-medium transition-all cursor-pointer">
-                        🔍 Cari
-                    </button>
-                    {(filters?.search || filters?.category) && (
-                        <button type="button" onClick={handleReset}
-                            className="border border-slate-300 hover:bg-slate-100 px-4 py-2.5 rounded-xl text-sm cursor-pointer">
-                            ✕ Reset
+                <div className="max-w-7xl mx-auto px-4 py-8">
+                    <form onSubmit={handleFilter} className="flex flex-col md:flex-row gap-3 mb-8">
+                        <input
+                            type="text"
+                            aria-label="Cari artikel"
+                            value={search}
+                            onChange={e => setSearch(e.target.value)}
+                            placeholder="Cari artikel..."
+                            className="flex-1 border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white"
+                        />
+                        <select
+                            aria-label="Filter kategori"
+                            value={category}
+                            onChange={e => setCategory(e.target.value)}
+                            className="border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white cursor-pointer"
+                        >
+                            <option value="">Semua Kategori</option>
+                            {categories?.map(cat => (
+                                <option key={cat.value} value={cat.value}>{cat.label}</option>
+                            ))}
+                        </select>
+                        <button type="submit" className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-2.5 rounded-xl text-sm font-medium transition-all cursor-pointer">
+                            🔍 Cari
                         </button>
+                        {(filters?.search || filters?.category) && (
+                            <button type="button" onClick={handleReset}
+                                className="border border-slate-300 hover:bg-slate-100 px-4 py-2.5 rounded-xl text-sm cursor-pointer">
+                                ✕ Reset
+                            </button>
+                        )}
+                    </form>
+
+                    {posts.data?.length > 0 ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {posts.data.map(post => <PostCard key={post.id} post={post} />)}
+                        </div>
+                    ) : (
+                        <div className="text-center py-20 text-slate-500">
+                            <div className="text-6xl mb-4">📭</div>
+                            <p className="text-lg font-semibold">Tidak ada artikel ditemukan</p>
+                            <p className="text-sm mt-1">Coba ubah filter pencarian Anda</p>
+                        </div>
                     )}
-                </form>
 
-                {posts.data?.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {posts.data.map(post => <PostCard key={post.id} post={post} />)}
-                    </div>
-                ) : (
-                    <div className="text-center py-20 text-slate-400">
-                        <div className="text-6xl mb-4">📭</div>
-                        <p className="text-lg font-semibold">Tidak ada artikel ditemukan</p>
-                        <p className="text-sm mt-1">Coba ubah filter pencarian Anda</p>
-                    </div>
-                )}
-
-                {posts.last_page > 1 && (
-                    <div className="flex justify-center gap-2 mt-10">
-                        {posts.links?.map((link, i) => (
-                            <button
-                                key={i}
-                                onClick={() => link.url && router.get(link.url)}
-                                disabled={!link.url}
-                                dangerouslySetInnerHTML={{ __html: link.label }}
-                                className={`px-3 py-1.5 rounded-lg text-sm transition-all cursor-pointer ${link.active ? 'bg-violet-600 text-white' : link.url ? 'bg-white border border-slate-300 hover:bg-slate-50' : 'opacity-40 cursor-not-allowed'}`}
-                            />
-                        ))}
-                    </div>
-                )}
-            </div>
+                    {posts.last_page > 1 && (
+                        <nav aria-label="Paginasi" className="flex justify-center gap-2 mt-10">
+                            {posts.links?.map((link, i) => (
+                                <button
+                                    key={i}
+                                    onClick={() => link.url && router.get(link.url)}
+                                    disabled={!link.url}
+                                    dangerouslySetInnerHTML={{ __html: link.label }}
+                                    className={`px-3 py-1.5 rounded-lg text-sm transition-all cursor-pointer ${link.active ? 'bg-violet-600 text-white' : link.url ? 'bg-white border border-slate-300 hover:bg-slate-50' : 'opacity-40 cursor-not-allowed'}`}
+                                />
+                            ))}
+                        </nav>
+                    )}
+                </div>
+            </main>
 
             <footer className="bg-slate-900 text-slate-400 mt-16">
                 <div className="max-w-7xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-between gap-4">

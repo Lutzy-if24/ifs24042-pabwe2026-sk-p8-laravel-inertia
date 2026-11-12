@@ -27,7 +27,7 @@ export default function UserPostList({ user, posts, filters }) {
                         </div>
                         <div>
                             <p className="font-semibold text-slate-900 text-sm">{user.name}</p>
-                            <p className="text-xs text-slate-400">@{user.username}</p>
+                            <p className="text-xs text-slate-500">@{user.username}</p>
                         </div>
                     </div>
                 </div>
@@ -38,9 +38,9 @@ export default function UserPostList({ user, posts, filters }) {
             </div>
 
             <form onSubmit={handleSearch} className="flex gap-2 mb-4">
-                <input name="search" defaultValue={filters?.search} placeholder="Cari judul artikel..."
+                <input name="search" aria-label="Cari judul artikel" defaultValue={filters?.search} placeholder="Cari judul artikel..."
                     className="border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 w-56" />
-                <button type="submit" className="bg-violet-600 hover:bg-violet-700 text-white px-4 py-2 rounded-lg text-sm cursor-pointer">🔍</button>
+                <button type="submit" aria-label="Cari" className="bg-violet-600 hover:bg-violet-700 text-white px-4 py-2 rounded-lg text-sm cursor-pointer">🔍</button>
             </form>
 
             <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
@@ -64,12 +64,12 @@ export default function UserPostList({ user, posts, filters }) {
                                     {post.is_published ? '✅ Published' : '📋 Draf'}
                                 </span>
                             </div>
-                            <div className="hidden md:block col-span-3 text-xs text-slate-400">
+                            <div className="hidden md:block col-span-3 text-xs text-slate-500">
                                 {post.created_at ? new Date(post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) : '—'}
                             </div>
                         </div>
                     )) : (
-                        <div className="text-center py-16 text-slate-400">
+                        <div className="text-center py-16 text-slate-500">
                             <div className="text-5xl mb-3">📭</div>
                             <p className="font-semibold">Pengguna ini belum punya artikel</p>
                         </div>

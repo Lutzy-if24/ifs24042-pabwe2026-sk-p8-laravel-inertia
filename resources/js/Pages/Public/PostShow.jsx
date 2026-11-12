@@ -6,7 +6,7 @@ function PublicNavbar() {
     const { auth } = usePage().props;
     const user = auth?.user;
     return (
-        <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200 shadow-sm">
+        <nav aria-label="Navigasi utama" className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200 shadow-sm">
             <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
                 <Link href={route('public.index')} className="flex items-center gap-2.5 font-black text-violet-700 text-xl">
                     <div className="w-8 h-8 bg-violet-700 rounded-lg flex items-center justify-center">
@@ -79,83 +79,85 @@ export default function PostShow({ post }) {
         <div className="min-h-screen bg-slate-50">
             <PublicNavbar />
 
-            <article className="max-w-4xl mx-auto px-4 py-10">
-                {/* Breadcrumb */}
-                <nav className="text-sm text-slate-500 mb-6 flex items-center gap-2">
-                    <Link href={route('public.index')} className="hover:text-violet-700">Beranda</Link>
-                    <span>/</span>
-                    <Link href={route('public.articles')} className="hover:text-violet-700">Artikel</Link>
-                    <span>/</span>
-                    <span className="text-slate-800 truncate max-w-xs">{post.title}</span>
-                </nav>
+            <main>
+                <article className="max-w-4xl mx-auto px-4 py-10">
+                    {/* Breadcrumb */}
+                    <nav aria-label="Breadcrumb" className="text-sm text-slate-500 mb-6 flex items-center gap-2">
+                        <Link href={route('public.index')} className="hover:text-violet-700">Beranda</Link>
+                        <span>/</span>
+                        <Link href={route('public.articles')} className="hover:text-violet-700">Artikel</Link>
+                        <span>/</span>
+                        <span className="text-slate-800 truncate max-w-xs">{post.title}</span>
+                    </nav>
 
-                {/* Category & Meta */}
-                <div className="flex items-center gap-3 mb-4">
-                    <span className={`text-xs font-semibold px-3 py-1 rounded-full ${categoryColors[post.category] || 'bg-slate-100 text-slate-700'}`}>
-                        {post.category}
-                    </span>
-                    <span className="text-slate-400 text-sm">·</span>
-                    <span className="text-sm text-slate-500">
-                        {post.published_at
-                            ? new Date(post.published_at).toLocaleDateString('id-ID', {
-                                  weekday: 'long',
-                                  day: 'numeric',
-                                  month: 'long',
-                                  year: 'numeric',
-                              })
-                            : ''}
-                    </span>
-                </div>
-
-                {/* Title */}
-                <h1 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-4">{post.title}</h1>
-
-                {/* Author */}
-                <div className="flex items-center gap-3 mb-8 pb-6 border-b border-slate-200">
-                    <div className="w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center font-bold text-violet-700">
-                        {post.user?.name?.charAt(0).toUpperCase()}
+                    {/* Category & Meta */}
+                    <div className="flex items-center gap-3 mb-4">
+                        <span className={`text-xs font-semibold px-3 py-1 rounded-full ${categoryColors[post.category] || 'bg-slate-100 text-slate-700'}`}>
+                            {post.category}
+                        </span>
+                        <span aria-hidden="true" className="text-slate-500 text-sm">·</span>
+                        <span className="text-sm text-slate-500">
+                            {post.published_at
+                                ? new Date(post.published_at).toLocaleDateString('id-ID', {
+                                      weekday: 'long',
+                                      day: 'numeric',
+                                      month: 'long',
+                                      year: 'numeric',
+                                  })
+                                : ''}
+                        </span>
                     </div>
-                    <div>
-                        <p className="font-semibold text-slate-800 text-sm">{post.user?.name}</p>
-                        <p className="text-xs text-slate-500">@{post.user?.username}</p>
-                    </div>
-                </div>
 
-                {/* Cover Image */}
-                {post.cover_image_path && (
-                    <div className="rounded-2xl overflow-hidden mb-8">
-                        <img src={`/storage/${post.cover_image_path}`} alt={post.title} className="w-full object-cover max-h-96" />
-                    </div>
-                )}
+                    {/* Title */}
+                    <h1 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-4">{post.title}</h1>
 
-                {/* Excerpt */}
-                {post.excerpt && (
-                    <div className="bg-violet-50 border-l-4 border-violet-500 px-6 py-4 rounded-r-xl mb-8">
-                        <p className="text-violet-800 font-medium italic">{post.excerpt}</p>
+                    {/* Author */}
+                    <div className="flex items-center gap-3 mb-8 pb-6 border-b border-slate-200">
+                        <div className="w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center font-bold text-violet-700">
+                            {post.user?.name?.charAt(0).toUpperCase()}
+                        </div>
+                        <div>
+                            <p className="font-semibold text-slate-800 text-sm">{post.user?.name}</p>
+                            <p className="text-xs text-slate-500">@{post.user?.username}</p>
+                        </div>
                     </div>
-                )}
 
-                {/* Content via TOAST UI Viewer */}
-                <div className="prose-content bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
-                    <div ref={viewerRef} />
-                </div>
+                    {/* Cover Image */}
+                    {post.cover_image_path && (
+                        <div className="rounded-2xl overflow-hidden mb-8">
+                            <img src={`/storage/${post.cover_image_path}`} alt={post.title} className="w-full object-cover max-h-96" />
+                        </div>
+                    )}
 
-                {/* CTA komunitas */}
-                <div className="mt-12 bg-gradient-to-br from-violet-900 to-indigo-900 rounded-2xl p-8 text-white text-center">
-                    <h2 className="text-2xl font-black mb-2">Bergabung dengan Komunitas Penulis</h2>
-                    <p className="text-violet-200 mb-6 max-w-md mx-auto">
-                        Bagikan cerita, ilmu, dan pengalaman Anda dengan ribuan pembaca di BlogVerse Pro.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href={route('register')} className="bg-white text-violet-900 hover:bg-violet-50 font-bold px-7 py-3 rounded-xl transition-all cursor-pointer">
-                            ✨ Daftar Gratis
-                        </Link>
-                        <Link href={route('login')} className="border border-violet-400 text-violet-200 hover:bg-violet-700/50 font-semibold px-7 py-3 rounded-xl transition-all cursor-pointer">
-                            🔐 Masuk
-                        </Link>
+                    {/* Excerpt */}
+                    {post.excerpt && (
+                        <div className="bg-violet-50 border-l-4 border-violet-500 px-6 py-4 rounded-r-xl mb-8">
+                            <p className="text-violet-800 font-medium italic">{post.excerpt}</p>
+                        </div>
+                    )}
+
+                    {/* Content via TOAST UI Viewer */}
+                    <div className="prose-content bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+                        <div ref={viewerRef} />
                     </div>
-                </div>
-            </article>
+
+                    {/* CTA komunitas */}
+                    <div className="mt-12 bg-gradient-to-br from-violet-900 to-indigo-900 rounded-2xl p-8 text-white text-center">
+                        <h2 className="text-2xl font-black mb-2">Bergabung dengan Komunitas Penulis</h2>
+                        <p className="text-violet-200 mb-6 max-w-md mx-auto">
+                            Bagikan cerita, ilmu, dan pengalaman Anda dengan ribuan pembaca di BlogVerse Pro.
+                        </p>
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <Link href={route('register')} className="bg-white text-violet-900 hover:bg-violet-50 font-bold px-7 py-3 rounded-xl transition-all cursor-pointer">
+                                ✨ Daftar Gratis
+                            </Link>
+                            <Link href={route('login')} className="border border-violet-400 text-violet-200 hover:bg-violet-700/50 font-semibold px-7 py-3 rounded-xl transition-all cursor-pointer">
+                                🔐 Masuk
+                            </Link>
+                        </div>
+                    </div>
+                </article>
+            </main>
 
             {/* Footer */}
             <footer className="bg-slate-900 text-slate-400 mt-16">

@@ -15,7 +15,7 @@ export default function Register() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-violet-900 to-purple-900 flex items-center justify-center p-4">
+        <main className="min-h-screen bg-gradient-to-br from-indigo-950 via-violet-900 to-purple-900 flex items-center justify-center p-4">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute -top-40 -left-40 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl" />
                 <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl" />
@@ -65,7 +65,7 @@ export default function Register() {
                             id="register-submit"
                             type="submit"
                             disabled={processing}
-                            className="w-full bg-indigo-500 hover:bg-indigo-400 text-white font-semibold py-3 rounded-lg transition-all duration-200 mt-2 cursor-pointer disabled:opacity-60 flex items-center justify-center gap-2"
+                            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition-all duration-200 mt-2 cursor-pointer disabled:opacity-60 flex items-center justify-center gap-2"
                         >
                             {processing ? (
                                 <>
@@ -90,6 +90,6 @@ export default function Register() {
                     </Link>
                 </p>
             </div>
-        </div>
+        </main>
     );
 }

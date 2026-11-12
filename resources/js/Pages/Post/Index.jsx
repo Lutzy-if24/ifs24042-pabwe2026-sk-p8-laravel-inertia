@@ -135,15 +135,15 @@ function PostModal({ mode, post, categories, onClose }) {
             {/* Header */}
             <div className={`flex items-center justify-between px-6 py-4 border-b ${isAdd ? 'bg-violet-700 text-white' : 'bg-amber-600 text-white'}`}>
                 <h2 className="text-lg font-bold">{isAdd ? '✍️ Tambah Artikel Baru' : '✏️ Ubah Artikel'}</h2>
-                <button onClick={onClose} className="text-white/70 hover:text-white text-2xl cursor-pointer leading-none">✕</button>
+                <button onClick={onClose} aria-label="Tutup" className="text-white/70 hover:text-white text-2xl cursor-pointer leading-none">✕</button>
             </div>
 
             {/* Body */}
             <form onSubmit={handleSubmit} className="flex flex-col flex-1 overflow-hidden">
                 <div className="flex-1 overflow-y-auto p-6 space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">Judul <span className="text-red-500">*</span></label>
-                        <input type="text" value={data.title} onChange={e => setData('title', e.target.value)}
+                        <label htmlFor="post-title" className="block text-sm font-medium text-slate-700 mb-1">Judul <span className="text-red-500">*</span></label>
+                        <input id="post-title" type="text" value={data.title} onChange={e => setData('title', e.target.value)}
                             className={`w-full border rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 ${errors.title ? 'border-red-400' : 'border-slate-300'}`}
                             placeholder="Judul artikel yang menarik..." />
                         {errors.title && <p className="text-red-500 text-xs mt-1">{errors.title}</p>}
@@ -151,8 +151,8 @@ function PostModal({ mode, post, categories, onClose }) {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Kategori <span className="text-red-500">*</span></label>
-                            <select value={data.category} onChange={e => setData('category', e.target.value)}
+                            <label htmlFor="post-category" className="block text-sm font-medium text-slate-700 mb-1">Kategori <span className="text-red-500">*</span></label>
+                            <select id="post-category" value={data.category} onChange={e => setData('category', e.target.value)}
                                 className="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 cursor-pointer bg-white">
                                 {categories?.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
                             </select>
@@ -169,8 +169,8 @@ function PostModal({ mode, post, categories, onClose }) {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">Ringkasan</label>
-                        <textarea value={data.excerpt} onChange={e => setData('excerpt', e.target.value)}
+                        <label htmlFor="post-excerpt" className="block text-sm font-medium text-slate-700 mb-1">Ringkasan</label>
+                        <textarea id="post-excerpt" value={data.excerpt} onChange={e => setData('excerpt', e.target.value)}
                             rows={2} placeholder="Ringkasan singkat artikel (opsional)..."
                             className="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none" />
                         {errors.excerpt && <p className="text-red-500 text-xs mt-1">{errors.excerpt}</p>}
@@ -188,7 +188,7 @@ function PostModal({ mode, post, categories, onClose }) {
                                 {currentCover ? (
                                     <img src={currentCover} alt="Cover artikel" className="w-full max-h-56 object-cover rounded-lg mb-3" />
                                 ) : (
-                                    <div className="w-full h-32 bg-slate-50 border border-dashed border-slate-300 rounded-lg mb-3 flex items-center justify-center text-sm text-slate-400">
+                                    <div className="w-full h-32 bg-slate-50 border border-dashed border-slate-300 rounded-lg mb-3 flex items-center justify-center text-sm text-slate-500">
                                         Belum ada cover
                                     </div>
                                 )}
@@ -196,6 +196,7 @@ function PostModal({ mode, post, categories, onClose }) {
                                     <input
                                         ref={coverInputRef}
                                         type="file"
+                                        aria-label="Pilih foto cover"
                                         accept="image/jpeg,image/png,image/webp"
                                         onChange={handleCoverChange}
                                         className="text-sm text-slate-600 file:mr-3 file:px-4 file:py-2 file:rounded-lg file:border-0 file:bg-violet-50 file:text-violet-700 file:font-medium file:cursor-pointer cursor-pointer"
@@ -215,7 +216,7 @@ function PostModal({ mode, post, categories, onClose }) {
                                         </button>
                                     )}
                                 </div>
-                                <p className="text-xs text-slate-400 mt-2">Format JPG, PNG, atau WebP. Maksimal 2 MB.</p>
+                                <p className="text-xs text-slate-500 mt-2">Format JPG, PNG, atau WebP. Maksimal 2 MB.</p>
                                 {coverError && <p className="text-red-500 text-xs mt-1">{coverError}</p>}
                             </div>
                         )}
@@ -277,7 +278,7 @@ function PostDetailModal({ post, onClose }) {
         <div className="fixed inset-0 z-50 flex flex-col bg-white">
             <div className="flex items-center justify-between px-6 py-4 border-b bg-slate-800 text-white">
                 <h2 className="text-lg font-bold">👁️ Detail Artikel</h2>
-                <button onClick={onClose} className="text-white/70 hover:text-white text-2xl cursor-pointer">✕</button>
+                <button onClick={onClose} aria-label="Tutup" className="text-white/70 hover:text-white text-2xl cursor-pointer">✕</button>
             </div>
             <div className="flex-1 overflow-y-auto p-6">
                 <div className="max-w-3xl mx-auto">
@@ -342,13 +343,14 @@ function AiGeneratorModal({ categories, onClose }) {
         <div className="fixed inset-0 z-50 flex flex-col bg-white">
             <div className="flex items-center justify-between px-6 py-4 border-b bg-gradient-to-r from-indigo-700 to-violet-700 text-white">
                 <h2 className="text-lg font-bold">🤖 AI Generator Artikel</h2>
-                <button onClick={onClose} className="text-white/70 hover:text-white text-2xl cursor-pointer">✕</button>
+                <button onClick={onClose} aria-label="Tutup" className="text-white/70 hover:text-white text-2xl cursor-pointer">✕</button>
             </div>
             <div className="flex-1 overflow-y-auto p-6">
                 <form onSubmit={handleGenerate} className="flex items-end gap-3 mb-6">
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">Jumlah Artikel (1–10)</label>
+                        <label htmlFor="ai-count" className="block text-sm font-medium text-slate-700 mb-1">Jumlah Artikel (1–10)</label>
                         <input
+                            id="ai-count"
                             type="number"
                             min={1}
                             max={10}
@@ -381,7 +383,7 @@ function AiGeneratorModal({ categories, onClose }) {
                                 <div key={i} onClick={() => toggleSelect(i)}
                                     className={`border rounded-xl p-4 cursor-pointer transition-all ${selected.includes(i) ? 'border-violet-400 bg-violet-50' : 'border-slate-200 hover:border-slate-300'}`}>
                                     <div className="flex items-start gap-3">
-                                        <input type="checkbox" checked={selected.includes(i)} readOnly className="mt-1 accent-violet-600" />
+                                        <input type="checkbox" aria-label={`Pilih artikel: ${post.title}`} checked={selected.includes(i)} readOnly className="mt-1 accent-violet-600" />
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2 mb-1">
                                                 <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${CATEGORY_COLORS[post.category] || 'bg-slate-100 text-slate-700'}`}>{post.category}</span>
@@ -415,7 +417,8 @@ function KebabMenu({ post, onView, onEdit, onDelete }) {
     const [open, setOpen] = useState(false);
     return (
         <div className="relative">
-            <button onClick={() => setOpen(!open)} className="p-1.5 rounded-lg hover:bg-slate-100 cursor-pointer text-slate-500 hover:text-slate-800 transition-colors" title="Aksi">⋮</button>
+            <button onClick={() => setOpen(!open)} aria-label={`Aksi untuk ${post.title}`} aria-haspopup="menu" aria-expanded={open}
+                className="p-1.5 rounded-lg hover:bg-slate-100 cursor-pointer text-slate-500 hover:text-slate-800 transition-colors" title="Aksi">⋮</button>
             {open && (
                 <>
                     <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
@@ -521,9 +524,9 @@ export default function PostIndex({ posts, filters, stats, categories }) {
             <div className="bg-white rounded-xl border border-slate-200 p-4 mb-4">
                 <div className="flex flex-col md:flex-row gap-3">
                     <form onSubmit={handleSearch} className="flex gap-2 flex-1">
-                        <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Cari artikel..."
+                        <input type="text" aria-label="Cari artikel" value={search} onChange={e => setSearch(e.target.value)} placeholder="Cari artikel..."
                             className="flex-1 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500" />
-                        <button type="submit" className="bg-violet-600 hover:bg-violet-700 text-white px-4 py-2 rounded-lg text-sm cursor-pointer">🔍</button>
+                        <button type="submit" aria-label="Cari" className="bg-violet-600 hover:bg-violet-700 text-white px-4 py-2 rounded-lg text-sm cursor-pointer">🔍</button>
                     </form>
                     <div className="flex flex-wrap gap-2">
                         <button onClick={() => setModal({ type: 'add' })}
@@ -543,7 +546,7 @@ export default function PostIndex({ posts, filters, stats, categories }) {
                             {importLoading ? <span className="w-3 h-3 border-2 border-slate-400 border-t-slate-800 rounded-full animate-spin" /> : '📤'}
                             Impor Excel
                         </button>
-                        <input ref={fileRef} type="file" accept=".xlsx,.xls" className="hidden" onChange={handleImport} />
+                        <input ref={fileRef} type="file" aria-label="Impor file Excel" accept=".xlsx,.xls" className="hidden" onChange={handleImport} />
                     </div>
                 </div>
             </div>
@@ -564,7 +567,7 @@ export default function PostIndex({ posts, filters, stats, categories }) {
                                 <div key={post.id} className="grid grid-cols-12 gap-4 px-5 py-4 items-center hover:bg-slate-50 transition-colors">
                                     <div className="col-span-10 md:col-span-5">
                                         <p className="font-semibold text-slate-900 text-sm truncate">{post.title}</p>
-                                        <p className="text-xs text-slate-400 mt-0.5 truncate">{post.slug}</p>
+                                        <p className="text-xs text-slate-500 mt-0.5 truncate">{post.slug}</p>
                                     </div>
                                     <div className="hidden md:block col-span-2">
                                         <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${CATEGORY_COLORS[post.category] || 'bg-slate-100 text-slate-700'}`}>
@@ -577,7 +580,7 @@ export default function PostIndex({ posts, filters, stats, categories }) {
                                             {publishLoading === post.id ? '...' : post.is_published ? '✅ Published' : '📋 Draf'}
                                         </button>
                                     </div>
-                                    <div className="hidden md:block col-span-2 text-xs text-slate-400">
+                                    <div className="hidden md:block col-span-2 text-xs text-slate-500">
                                         {post.created_at ? new Date(post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) : '—'}
                                     </div>
                                     <div className="col-span-2 md:col-span-1 flex justify-end">
@@ -593,7 +596,7 @@ export default function PostIndex({ posts, filters, stats, categories }) {
                         </div>
                     </div>
                 ) : (
-                    <div className="text-center py-16 text-slate-400">
+                    <div className="text-center py-16 text-slate-500">
                         <div className="text-5xl mb-3">📭</div>
                         <p className="font-semibold">Belum ada artikel</p>
                         <p className="text-sm mt-1">Klik "Tambah" untuk membuat artikel pertama Anda</p>
