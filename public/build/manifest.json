@@ -1,6 +1,6 @@
 {
-  "_AppLayout-fzy6UVil.js": {
-    "file": "assets/AppLayout-fzy6UVil.js",
+  "_AppLayout-B1kQdxAu.js": {
+    "file": "assets/AppLayout-B1kQdxAu.js",
     "name": "AppLayout",
     "imports": [
       "resources/js/app.jsx"
@@ -10,22 +10,50 @@
     "file": "assets/toastui-editor-viewer-D6cGP9qV.css",
     "src": "_toastui-editor-viewer-D6cGP9qV.css"
   },
-  "_toastui-editor-viewer-DlBhXLAh.js": {
-    "file": "assets/toastui-editor-viewer-DlBhXLAh.js",
+  "_toastui-editor-viewer-DFs7prYP.js": {
+    "file": "assets/toastui-editor-viewer-DFs7prYP.js",
     "name": "toastui-editor-viewer",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx"
     ]
   },
+  "node_modules/@fontsource-variable/inter/files/inter-cyrillic-ext-wght-normal.woff2": {
+    "file": "assets/inter-cyrillic-ext-wght-normal-BOeWTOD4.woff2",
+    "src": "node_modules/@fontsource-variable/inter/files/inter-cyrillic-ext-wght-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/inter/files/inter-cyrillic-wght-normal.woff2": {
+    "file": "assets/inter-cyrillic-wght-normal-DqGufNeO.woff2",
+    "src": "node_modules/@fontsource-variable/inter/files/inter-cyrillic-wght-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/inter/files/inter-greek-ext-wght-normal.woff2": {
+    "file": "assets/inter-greek-ext-wght-normal-DlzME5K_.woff2",
+    "src": "node_modules/@fontsource-variable/inter/files/inter-greek-ext-wght-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/inter/files/inter-greek-wght-normal.woff2": {
+    "file": "assets/inter-greek-wght-normal-CkhJZR-_.woff2",
+    "src": "node_modules/@fontsource-variable/inter/files/inter-greek-wght-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/inter/files/inter-latin-ext-wght-normal.woff2": {
+    "file": "assets/inter-latin-ext-wght-normal-DO1Apj_S.woff2",
+    "src": "node_modules/@fontsource-variable/inter/files/inter-latin-ext-wght-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2": {
+    "file": "assets/inter-latin-wght-normal-Dx4kXJAl.woff2",
+    "src": "node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/inter/files/inter-vietnamese-wght-normal.woff2": {
+    "file": "assets/inter-vietnamese-wght-normal-CBcvBZtf.woff2",
+    "src": "node_modules/@fontsource-variable/inter/files/inter-vietnamese-wght-normal.woff2"
+  },
   "node_modules/@toast-ui/editor/dist/esm/index.js": {
-    "file": "assets/esm-BxAzkyUc.js",
+    "file": "assets/esm-DvNNYHt9.js",
     "name": "esm",
     "src": "node_modules/@toast-ui/editor/dist/esm/index.js",
     "isDynamicEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app-fNmb_6oy.css",
+    "file": "assets/app-QJY7sMaK.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -34,46 +62,46 @@
     ]
   },
   "resources/js/Pages/Admin/PostList.jsx": {
-    "file": "assets/PostList-BTQu5JS3.js",
+    "file": "assets/PostList-C8V6kK6E.js",
     "name": "PostList",
     "src": "resources/js/Pages/Admin/PostList.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_AppLayout-fzy6UVil.js"
+      "_AppLayout-B1kQdxAu.js"
     ],
     "css": [
-      "assets/app-fNmb_6oy.css"
+      "assets/app-QJY7sMaK.css"
     ]
   },
   "resources/js/Pages/Admin/UserList.jsx": {
-    "file": "assets/UserList-BvPytWAA.js",
+    "file": "assets/UserList-B0nwcLmB.js",
     "name": "UserList",
     "src": "resources/js/Pages/Admin/UserList.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_AppLayout-fzy6UVil.js"
+      "_AppLayout-B1kQdxAu.js"
     ],
     "css": [
-      "assets/app-fNmb_6oy.css"
+      "assets/app-QJY7sMaK.css"
     ]
   },
   "resources/js/Pages/Admin/UserPostList.jsx": {
-    "file": "assets/UserPostList-Bcj0ask7.js",
+    "file": "assets/UserPostList-DBZs57MD.js",
     "name": "UserPostList",
     "src": "resources/js/Pages/Admin/UserPostList.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_AppLayout-fzy6UVil.js"
+      "_AppLayout-B1kQdxAu.js"
     ],
     "css": [
-      "assets/app-fNmb_6oy.css"
+      "assets/app-QJY7sMaK.css"
     ]
   },
   "resources/js/Pages/Auth/Login.jsx": {
-    "file": "assets/Login-DXNPi-IN.js",
+    "file": "assets/Login-B3lFeHTW.js",
     "name": "Login",
     "src": "resources/js/Pages/Auth/Login.jsx",
     "isDynamicEntry": true,
@@ -81,11 +109,11 @@
       "resources/js/app.jsx"
     ],
     "css": [
-      "assets/app-fNmb_6oy.css"
+      "assets/app-QJY7sMaK.css"
     ]
   },
   "resources/js/Pages/Auth/Register.jsx": {
-    "file": "assets/Register-BEey12FA.js",
+    "file": "assets/Register-CbuVlFIy.js",
     "name": "Register",
     "src": "resources/js/Pages/Auth/Register.jsx",
     "isDynamicEntry": true,
@@ -93,59 +121,59 @@
       "resources/js/app.jsx"
     ],
     "css": [
-      "assets/app-fNmb_6oy.css"
+      "assets/app-QJY7sMaK.css"
     ]
   },
   "resources/js/Pages/Post/Index.jsx": {
-    "file": "assets/Index-D2XletV1.js",
+    "file": "assets/Index-CEBh634c.js",
     "name": "Index",
     "src": "resources/js/Pages/Post/Index.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_AppLayout-fzy6UVil.js"
+      "_AppLayout-B1kQdxAu.js"
     ],
     "dynamicImports": [
       "node_modules/@toast-ui/editor/dist/esm/index.js",
-      "_toastui-editor-viewer-DlBhXLAh.js"
+      "_toastui-editor-viewer-DFs7prYP.js"
     ],
     "css": [
       "assets/Index-DveZXXPf.css",
       "assets/toastui-editor-viewer-D6cGP9qV.css",
-      "assets/app-fNmb_6oy.css"
+      "assets/app-QJY7sMaK.css"
     ]
   },
   "resources/js/Pages/Post/Show.jsx": {
-    "file": "assets/Show-CpdtMqh_.js",
+    "file": "assets/Show-B8kBzH8E.js",
     "name": "Show",
     "src": "resources/js/Pages/Post/Show.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_AppLayout-fzy6UVil.js"
+      "_AppLayout-B1kQdxAu.js"
     ],
     "dynamicImports": [
       "node_modules/@toast-ui/editor/dist/esm/index.js"
     ],
     "css": [
-      "assets/app-fNmb_6oy.css"
+      "assets/app-QJY7sMaK.css"
     ]
   },
   "resources/js/Pages/Profile/Edit.jsx": {
-    "file": "assets/Edit-BG5H-4dB.js",
+    "file": "assets/Edit-CrTHCv2h.js",
     "name": "Edit",
     "src": "resources/js/Pages/Profile/Edit.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_AppLayout-fzy6UVil.js"
+      "_AppLayout-B1kQdxAu.js"
     ],
     "css": [
-      "assets/app-fNmb_6oy.css"
+      "assets/app-QJY7sMaK.css"
     ]
   },
   "resources/js/Pages/Public/PostIndex.jsx": {
-    "file": "assets/PostIndex-Fqq8kdze.js",
+    "file": "assets/PostIndex-CQOSrs1Z.js",
     "name": "PostIndex",
     "src": "resources/js/Pages/Public/PostIndex.jsx",
     "isDynamicEntry": true,
@@ -153,11 +181,11 @@
       "resources/js/app.jsx"
     ],
     "css": [
-      "assets/app-fNmb_6oy.css"
+      "assets/app-QJY7sMaK.css"
     ]
   },
   "resources/js/Pages/Public/PostShow.jsx": {
-    "file": "assets/PostShow-C-YYAgD2.js",
+    "file": "assets/PostShow-CrDTUXMu.js",
     "name": "PostShow",
     "src": "resources/js/Pages/Public/PostShow.jsx",
     "isDynamicEntry": true,
@@ -165,15 +193,15 @@
       "resources/js/app.jsx"
     ],
     "dynamicImports": [
-      "_toastui-editor-viewer-DlBhXLAh.js"
+      "_toastui-editor-viewer-DFs7prYP.js"
     ],
     "css": [
       "assets/toastui-editor-viewer-D6cGP9qV.css",
-      "assets/app-fNmb_6oy.css"
+      "assets/app-QJY7sMaK.css"
     ]
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-CkGaO2TQ.js",
+    "file": "assets/app-CiJTIpTJ.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,
@@ -190,7 +218,17 @@
       "resources/js/Pages/Public/PostShow.jsx"
     ],
     "css": [
-      "assets/app-fNmb_6oy.css"
+      "assets/app-De0U-GEI.css",
+      "assets/app-QJY7sMaK.css"
+    ],
+    "assets": [
+      "assets/inter-cyrillic-ext-wght-normal-BOeWTOD4.woff2",
+      "assets/inter-cyrillic-wght-normal-DqGufNeO.woff2",
+      "assets/inter-greek-ext-wght-normal-DlzME5K_.woff2",
+      "assets/inter-greek-wght-normal-CkhJZR-_.woff2",
+      "assets/inter-vietnamese-wght-normal-CBcvBZtf.woff2",
+      "assets/inter-latin-ext-wght-normal-DO1Apj_S.woff2",
+      "assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
     ]
   }
 }

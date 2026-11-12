@@ -12,7 +12,7 @@
 
     body {
         @apply antialiased;
-        font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+        font-family: 'Inter Variable', 'Inter', 'Segoe UI', system-ui, sans-serif;
     }
 }
 
